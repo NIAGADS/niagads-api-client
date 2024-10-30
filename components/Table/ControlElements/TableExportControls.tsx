@@ -32,7 +32,6 @@ export const exportTable = (table: ReactTable<any>, tableId: string, filteredRow
         delimiter: format == 'txt' ? '\t' : ',',
         exportType: format == 'txt' ? 'csv' : format
     })
-    //console.log(exportData)
 }
 
 
