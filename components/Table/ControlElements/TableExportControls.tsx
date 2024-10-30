@@ -24,12 +24,14 @@ export const exportTable = (table: ReactTable<any>, tableId: string, filteredRow
         Object.fromEntries(columnIds.map(colId => [colId, r.getValue(colId)])
         )))
 
-    exportFromJSON({ data: exportData, 
-        fileName: tableId, 
-        withBOM: true, 
-        extension: format, 
-        delimiter: format == 'txt' ? '\t' : ',', 
-        exportType: format == 'txt' ? 'csv' : format })
+    exportFromJSON({
+        data: exportData,
+        fileName: tableId,
+        withBOM: true,
+        extension: format,
+        delimiter: format == 'txt' ? '\t' : ',',
+        exportType: format == 'txt' ? 'csv' : format
+    })
     //console.log(exportData)
 }
 
@@ -60,12 +62,12 @@ export const TableExportControls = ({ isFiltered, onSubmit }: ExportMenuOptions)
 
     return (
         <div className="relative inline-block text-left dropdown">
-            <Tooltip message="export table data">
-                <Button variant="white">
-                    <ArrowDownTrayIcon className="icon-button"></ArrowDownTrayIcon>
-                    <span className="ml-2 uppercase">Export</span>
-                </Button>
-            </Tooltip>
+
+            <Button variant="white">
+                <ArrowDownTrayIcon className="icon-button"></ArrowDownTrayIcon>
+                <span className="ml-2 uppercase">Export</span>
+            </Button>
+
 
             <div className="hidden dropdown-menu">
                 <div className="z-50 absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none" aria-labelledby={`${formId}-headlessui-menu-button}`} id={`${formId}-headlessui-menu-items`} role="menu">
