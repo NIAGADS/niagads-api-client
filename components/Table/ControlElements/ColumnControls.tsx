@@ -17,8 +17,6 @@ interface ColumnControlsProps {
 // idea to create a drop down menu w/select which data and which format
 
 export const ColumnControls = ({ columns, onSelect }: ColumnControlsProps) => {
-    console.log(columns);
-
     return (
         <div className="relative inline-block text-left dropdown">
             <Button variant="white">
@@ -34,13 +32,13 @@ export const ColumnControls = ({ columns, onSelect }: ColumnControlsProps) => {
                     <div className="flex flex-col px-4 py-3">
                         {columns.map((col) => {
                             return col.getCanHide() ? (
-                                <label key={`s_${col.columnDef.id}`}>
-                                    <input
+                                <label key={`label_${col.columnDef.id}`}>
+                                    <input key={`input_${col.columnDef.id}`}
                                         type="checkbox"
                                         checked={col.getIsVisible()}
                                         onChange={col.getToggleVisibilityHandler()}
                                     />
-                                    {'   '}{col.columnDef.header?.toString()}
+                                    {'     '}{col.columnDef.header?.toString()}
                                 </label>
                             ) : (
                                 <></>
