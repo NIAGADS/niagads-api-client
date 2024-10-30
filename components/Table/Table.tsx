@@ -152,7 +152,7 @@ export const Table: React.FC<TableProps> = ({ id, columns, data, options }) => {
     );
     const [columnVisibility, setColumnVisibility] = useState({});
     const initialRender = useRef(true); // to regulate callbacks affected by the initial state
-    const enableRowSelect = !!options?.rowSelect?.onRowSelect;
+    const enableRowSelect = !!options?.rowSelect;
     const disableColumnFilters = !!options?.disableColumnFilters
 
     // Translate GenericColumns provided by user into React Table ColumnDefs
