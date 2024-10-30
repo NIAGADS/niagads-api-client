@@ -17,23 +17,31 @@ export interface CheckboxProps {
     label?: string
     checked?: boolean
     value?: string
-    defaultChecked?:boolean
+    defaultChecked?: boolean
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void | null
     disabled?: boolean
     alignCenter?: boolean
 }
 
-export const Checkbox = ({ variant = 'secondary', name, value, label, onChange, disabled = false, checked = false, defaultChecked = false, alignCenter=false }: CheckboxProps) => {
+export const Checkbox = ({ variant = 'secondary', name, value, label, onChange, disabled = false, checked = false, defaultChecked = false, alignCenter = false }: CheckboxProps) => {
     const className = CHECKBOX_TAILWIND_CSS[variant]
     return (
         <div className={alignCenter ? CHECKBOX_TAILWIND_CSS.alignCenter : ""}>
-            <input type="checkbox" className={className} 
-                name={name}
-                onChange={onChange} 
-                disabled={disabled}
-                checked={checked} 
-                value={value}
-                defaultChecked={defaultChecked}/>
+            {defaultChecked ?
+                <input type="checkbox" className={className}
+                    name={name}
+                    onChange={onChange}
+                    disabled={disabled}
+                    value={value}
+                    defaultChecked={defaultChecked} />
+                : <input type="checkbox" className={className}
+                    name={name}
+                    onChange={onChange}
+                    disabled={disabled}
+                    checked={checked}
+                    value={value}
+                />}
+
             {label && <label className="text-sm ml-2">{label}</label>}
         </div>
     )
