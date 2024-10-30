@@ -9,12 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.5",
+    "@tanstack/react-table": "^8.20.5",
+    "@uidotdev/usehooks": "^2.4.1",
+    "export-from-json": "github:NIAGADS/export-from-json#niagads",
     "ioredis": "^5.4.1",
+    "lodash.get": "^4.4.2",
+    "lodash.isobject": "^3.0.2",
+    "lodash.merge": "^4.6.2",
+    "lodash.range": "^3.2.0",
     "next": "15.0.2",
     "react": "19.0.0-rc-02c0e824-20241028",
-    "react-dom": "19.0.0-rc-02c0e824-20241028"
+    "react-dom": "19.0.0-rc-02c0e824-20241028",
+    "react-error-boundary": "^4.1.2"
   },
   "devDependencies": {
+    "@types/lodash.get": "^4.4.9",
+    "@types/lodash.isobject": "^3.0.9",
+    "@types/lodash.merge": "^4.6.9",
+    "@types/lodash.range": "^3.2.9",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

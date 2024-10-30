@@ -1,4 +1,5 @@
 import { getJsonValueFromCache } from "@/utils/cache"
+import Table from "@/components/Table/Table";
 
 type props = { params: any };
 export default async function Page({ params }: props) {
@@ -6,9 +7,9 @@ export default async function Page({ params }: props) {
 
     return (
         table ? <main>
-            {table.id}
+            <Table id={table.id} data={table.data} columns={table.columns} options={table.options} />
         </main> : <div>Response has expired</div>
     );
 }
 
-//<Table id={table.id} data={table.data} columns={table.columns} options={table.options} />
+//
