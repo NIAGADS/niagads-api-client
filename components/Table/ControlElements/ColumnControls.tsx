@@ -33,9 +33,8 @@ export const ColumnControls = ({ columns, onSelect }: ColumnControlsProps) => {
                 >
                     <div className="flex flex-col px-4 py-3">
                         {columns.map((col) => {
-                            console.log(col);
                             return col.getCanHide() ? (
-                                <label>
+                                <label key={`s_${col.columnDef.id}`}>
                                     <input
                                         type="checkbox"
                                         checked={col.getIsVisible()}
