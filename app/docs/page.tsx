@@ -1,6 +1,10 @@
-export default async function Page() {
+import { Alert } from "@/components/UI/Alert";
+
+export default function Page() {
     return (
-        <div>Coming Soon</div>
+        <main>
+            <Alert message="Under construction"></Alert>
+        </main>
     );
 }
 
