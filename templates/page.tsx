@@ -1,6 +1,7 @@
-// /view/table/[queryId]
+// TEMPLATE redirect endpoint
+
+import { Alert } from "@/components/UI/Alert";
 import { getJsonValueFromCache } from "@/utils/cache";
-import TableWrapper from './TableWrapper'
 
 type props = { params: any };
 export default async function Page({ params }: props) {
@@ -13,17 +14,15 @@ export default async function Page({ params }: props) {
     console.log(originatingRequest)
     return table ? (
         <main>
-            <TableWrapper
-                id={table.id}
-                data={table.data}
-                columns={table.columns}
-                options={table.options}
-                endpoint = {originatingRequest.endpoint}
-                parameters = {originatingRequest.parameters}
-            />
+            <div></div>
         </main>
     ) : (
-        <div>Response has expired</div>
+        <Alert variant="warning" message="Original response not found">
+            <div>
+                <p>Cached query responses expire after one hour.</p>
+                <p>To regenerate this view, please re-run your original API request.</p>
+            </div>
+        </Alert>
     );
 }
 

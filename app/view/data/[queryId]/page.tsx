@@ -1,3 +1,5 @@
+// /view/data[queryId]
+
 import { getJsonValueFromCache } from "@/utils/cache"
 import { GoslingWrapper } from "@/components/Gosling/GoslingWrapper"
 
