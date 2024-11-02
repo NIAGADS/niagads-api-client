@@ -5,7 +5,6 @@ import { backendFetch } from '@/utils/backend'
 import { headers } from 'next/headers'
 import { requestFromBrowser } from '@/utils/validation'
 
-
 export async function GET(request: NextRequest) {
     const response = await backendFetch(request)
 
@@ -15,15 +14,12 @@ export async function GET(request: NextRequest) {
         const userAgent = (await headers()).get('User-Agent')
         const validUserAgent: boolean = requestFromBrowser(userAgent!)
         if (!validUserAgent) {
-    
-            redirectEndpoint = '/data' + redirectEndpoint
-    
-            // FIXME: redirecting from this api route to another is not working
-            // may be fixed in @canary
-            // temp fix; fetch
-            const redirectUrl = new URL(redirectEndpoint, request.url)
-            const response = await fetch(redirectUrl.toString())
-            return response
+            if (!validUserAgent) {
+                return Response.json({
+                    error: 'Invalid parameter',
+                    msg: 'interactive data views can only be generated if request is made in a web-browser; set `format=JSON`'
+                })
+            }
         }
 
         const redirectUrl = new URL(redirectEndpoint, request.url)
@@ -32,4 +28,3 @@ export async function GET(request: NextRequest) {
 
     return Response.json(response)
 } 
-

@@ -10,9 +10,9 @@ export async function GET(request: NextRequest) {
     const response = await getJsonValueFromCache(queryId, "VIEW");
 
     return Response.json(Object.assign(response, {
-        'warning': {
-            'error': 'Invalid request',
-            'msg': 'interactive views can only be rendered in a web browser; returning view data'
+        warning: {
+            error: 'Invalid parameter',
+            msg: 'Interactive data views can only be generated if request is made in a web-browser; set format=JSON'
         }
     }))
 
