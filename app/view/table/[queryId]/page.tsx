@@ -12,7 +12,7 @@ export default async function Page({ params }: props) {
         `${queryId}_request`,
         "VIEW"
     );
-    const hasPagination = originatingRequest.hasOwnProperty('pagination')
+    const hasPagination = originatingRequest?.hasOwnProperty('pagination')
     return (
         <main>
             {hasPagination && <Alert variant="danger" message="Server-side pagination not yet implemented.">
@@ -35,9 +35,9 @@ export default async function Page({ params }: props) {
                     </div>
                 </Alert>
             }
-            <Alert variant="default" message="Originating request  ">
+            {originatingRequest && <Alert variant="default" message="Originating request  ">
                 <pre className="json" dangerouslySetInnerHTML={{ __html: jsonSyntaxHighlight(JSON.stringify(originatingRequest, undefined, 4)) }}></pre>
-            </Alert>
+            </Alert>}
         </main>
     );
 }
