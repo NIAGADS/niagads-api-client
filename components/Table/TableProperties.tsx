@@ -4,6 +4,7 @@ import { RowSelectionState } from "@tanstack/react-table"
 
 export interface RowSelectOptions {
     onRowSelect: (rowSelection: RowSelectionState) => void // behavior on select
+    onRowSelectAction?: string[]
     header: string,
     description?: string,
     enableMultiRowSelect?: boolean // optional: allow selection of multiple rows, false if missing
