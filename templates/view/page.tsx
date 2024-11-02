@@ -11,6 +11,10 @@ export default async function Page({ params }: props) {
         `${queryId}_request`,
         "VIEW"
     );
+    const hasPagination = originatingRequest.hasOwnProperty('pagination')
+    function jsonSyntaxHighlight(arg0: string): string | TrustedHTML {
+        throw new Error("Function not implemented.");
+    }
 
     return (
         <main>
@@ -23,6 +27,9 @@ export default async function Page({ params }: props) {
                     </div>
                 </Alert>
             }
+            <Alert variant="default" message="Originating request  ">
+                <pre className="json" dangerouslySetInnerHTML={{ __html: jsonSyntaxHighlight(JSON.stringify(originatingRequest, undefined, 4)) }}></pre>
+            </Alert>
         </main>
     );
 }

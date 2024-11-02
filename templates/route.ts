@@ -1,4 +1,4 @@
-// /track/[track]/data
+// TEMPLATE route
 
 import { NextRequest, NextResponse } from 'next/server'
 import { backendFetch } from '@/utils/backend'

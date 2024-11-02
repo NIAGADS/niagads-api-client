@@ -1,3 +1,4 @@
+// TEMPLATE page
 import { Alert } from "@/components/UI/Alert";
 
 // for server component:
@@ -10,4 +11,3 @@ export default function Page() {
     );
 }
 
-//
