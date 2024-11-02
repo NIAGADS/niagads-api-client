@@ -11,7 +11,19 @@ interface WrapperProps {
 
 export default function TableWrapper({ table, endpoint, parameters }:  WrapperProps) {
     if (table.options?.rowSelect) {
-        table.options.rowSelect.onRowSelect = () => console.log("selected");
+        const rowSelectAction = table.options.rowSelect.onRowSelectAction
+        if (!rowSelectAction) {
+            // FIXME: make error alert component w/url etc
+            return <Alert variant="danger" message="InternalServerError">
+                <div>
+                    <p>Please report this error to our GitHub Issue Tracker</p>
+                </div>
+            </Alert>
+        }
+        else {
+            //HERE
+            //table.options.onRowSelect = resolveRowSelectionAction(rowSelectAction)
+        }
     }
 
     table.options && (table.options.disableColumnFilters = true);
