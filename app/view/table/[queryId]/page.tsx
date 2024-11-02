@@ -2,6 +2,7 @@
 import { getJsonValueFromCache } from "@/utils/cache";
 import TableWrapper from './TableWrapper'
 import { Alert } from "@/components/UI/Alert";
+import { jsonSyntaxHighlight } from "@/common/utils"
 
 type props = { params: any };
 export default async function Page({ params }: props) {
@@ -11,21 +12,18 @@ export default async function Page({ params }: props) {
         `${queryId}_request`,
         "VIEW"
     );
-    console.log(originatingRequest)
+    const hasPagination = originatingRequest.hasOwnProperty('pagination')
     return (
         <main>
-            <Alert variant="info" message="Server-side pagination not yet implemented.">
+            {hasPagination && <Alert variant="danger" message="Server-side pagination not yet implemented.">
                 <div>
                     <p>Displaying page XX out of XXX.</p>
                     <p>To fetch paged data, increment the value of the <span className="font-medium text-red-600">page</span> parameter in your request.</p>
                 </div>
-            </Alert>
+            </Alert>}
             {response ?
                 <TableWrapper
-                    id={response.id}
-                    data={response.data}
-                    columns={response.columns}
-                    options={response.options}
+                    table={response}
                     endpoint={originatingRequest.endpoint}
                     parameters={originatingRequest.parameters}
                 />
@@ -36,7 +34,11 @@ export default async function Page({ params }: props) {
                         <p>To regenerate this view, please re-run your original API request.</p>
                     </div>
                 </Alert>
-            }</main>
+            }
+            <Alert variant="default" message="Originating request  ">
+                <pre className="json" dangerouslySetInnerHTML={{ __html: jsonSyntaxHighlight(JSON.stringify(originatingRequest, undefined, 4)) }}></pre>
+            </Alert>
+        </main>
     );
 }
 

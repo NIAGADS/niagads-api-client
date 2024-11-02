@@ -4,7 +4,7 @@ export async function backendFetch(request: NextRequest) {
     const incomingRequestUrl = new URL(request.url)
     const path = incomingRequestUrl.pathname
     const queryParams = incomingRequestUrl.search
-    const requestUri:string = process.env.API_SERVER_URL! + path + queryParams
+    const requestUri:string = process.env.API_SERVICE_URL! + path + queryParams
     const response = await(fetch(requestUri))
     const data = await response.json()
     return data

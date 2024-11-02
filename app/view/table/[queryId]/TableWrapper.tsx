@@ -4,27 +4,27 @@ import { Alert } from "@/components/UI/Alert";
 import { Button } from "@/components/UI/Button";
 
 interface WrapperProps {
+    table: TableProps
     endpoint: string,
     parameters: any
 }
 
-export default function TableWrapper({ id, data, columns, options, endpoint, parameters }: TableProps & WrapperProps) {
-    if (options?.rowSelect) {
-        options.rowSelect.onRowSelect = () => console.log("selected");
+export default function TableWrapper({ table, endpoint, parameters }:  WrapperProps) {
+    if (table.options?.rowSelect) {
+        table.options.rowSelect.onRowSelect = () => console.log("selected");
     }
 
-    options && (options.disableColumnFilters = false);
-
+    table.options && (table.options.disableColumnFilters = true);
 
     return (
         <main>
-
-            <Button variant="secondary">Fetch Data</Button>
+            
+            {table.options?.rowSelect && <Button variant="secondary">Fetch Data</Button>}
             <Table
-                id={id}
-                data={data}
-                columns={columns}
-                options={options}
+                id={table.id}
+                data={table.data}
+                columns={table.columns}
+                options={table.options}
             />
         </main>
     )
