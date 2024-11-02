@@ -1,6 +1,6 @@
 // /view/table/[queryId]
 import { getJsonValueFromCache } from "@/utils/cache";
-import TableWrapper from './TableWrapper'
+import TableWrapper from '../../../../component_wrappers/Table/TableWrapper'
 import { Alert } from "@/components/UI/Alert";
 import { jsonSyntaxHighlight } from "@/common/utils"
 
@@ -12,6 +12,7 @@ export default async function Page({ params }: props) {
         `${queryId}_request`,
         "VIEW"
     );
+
     const hasPagination = originatingRequest?.hasOwnProperty('pagination')
     return (
         <main>

@@ -2,14 +2,10 @@
 import Table, { TableProps } from "@/components/Table/Table";
 import { Alert } from "@/components/UI/Alert";
 import { Button } from "@/components/UI/Button";
+import { TableWrapperProps } from "./types";
 
-interface WrapperProps {
-    table: TableProps
-    endpoint: string,
-    parameters: any
-}
 
-export default function TableWrapper({ table, endpoint, parameters }:  WrapperProps) {
+export default function GenomeBrowserTrackTable({ table, endpoint, parameters }:  TableWrapperProps) {
     if (table.options?.rowSelect) {
         const rowSelectAction = table.options.rowSelect.onRowSelectAction
         if (!rowSelectAction) {

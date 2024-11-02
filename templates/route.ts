@@ -3,7 +3,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { backendFetch } from '@/utils/backend'
 import { headers } from 'next/headers'
-import { requestFromBrowser } from '@/utils/validation'
+import { requestFromBrowser } from '@/validators/request'
 
 export async function GET(request: NextRequest) {
     const response = await backendFetch(request)

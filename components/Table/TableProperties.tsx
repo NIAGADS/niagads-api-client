@@ -2,9 +2,10 @@ import { BasicType, FileFormat } from "@/common/types"
 import { GenericCell } from "@/components/Table/Cell"
 import { RowSelectionState } from "@tanstack/react-table"
 
+export type RowSelectAction = 'ACCESS_ROW_DATA' |  'UPDATE_GENOME_BROWSER' | 'UPDATE_LOCUS_ZOOM'
 export interface RowSelectOptions {
     onRowSelect: (rowSelection: RowSelectionState) => void // behavior on select
-    onRowSelectAction?: string[]
+    onRowSelectAction?: RowSelectAction
     header: string,
     description?: string,
     enableMultiRowSelect?: boolean // optional: allow selection of multiple rows, false if missing
