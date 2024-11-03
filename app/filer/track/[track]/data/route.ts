@@ -7,7 +7,6 @@ import { headers } from 'next/headers'
 
 export async function GET(request: NextRequest) {
     const response = await backendFetch(request)
-    console.log(response)
     if (response.hasOwnProperty('redirect')) {
         const userAgent = (await headers()).get('User-Agent')
         const validUserAgent: boolean = requestFromBrowser(userAgent!)
