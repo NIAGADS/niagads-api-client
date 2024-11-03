@@ -1,5 +1,6 @@
 // TEMPLATE /viewredirect endpoint
 
+import { jsonSyntaxHighlight } from "@/common/utils";
 import { Alert } from "@/components/UI/Alert";
 import { getJsonValueFromCache } from "@/utils/cache";
 
@@ -11,25 +12,54 @@ export default async function Page({ params }: props) {
         `${queryId}_request`,
         "VIEW"
     );
-    const hasPagination = originatingRequest?.hasOwnProperty('pagination')
-    function jsonSyntaxHighlight(arg0: string): string | TrustedHTML {
-        throw new Error("Function not implemented.");
-    }
 
+    const page = originatingRequest?.parameters?.page;
+    const totalNpages = originatingRequest?.pagination?.total_num_pages;
+    const showPaginationWarning = page !== null && totalNpages > 1;
     return (
         <main>
-            {response
-                ? <Alert variant="danger" message="View not yet implemented"></Alert>
-                : <Alert variant="warning" message="Original response not found">
+            {showPaginationWarning && (
+                <Alert
+                    variant="danger"
+                    message="Server-side pagination not yet implemented.">
                     <div>
-                        <p>Cached query responses expire after one hour.</p>
-                        <p>To regenerate this view, please re-run your original API request.</p>
+                        <p>Displaying page XX out of XXX.</p>
+                        <p>
+                            To fetch paged data, increment the value of the{" "}
+                            <span className="font-medium text-red-600">
+                                page
+                            </span>{" "}
+                            parameter in your request.
+                        </p>
                     </div>
                 </Alert>
-            }
-            {originatingRequest && <Alert variant="default" message="Originating request  ">
-                <pre className="json" dangerouslySetInnerHTML={{ __html: jsonSyntaxHighlight(JSON.stringify(originatingRequest, undefined, 4)) }}></pre>
-            </Alert>}
+            )}
+            {response ? (
+                <Alert
+                    variant="danger"
+                    message="View not yet implemented"></Alert>
+            ) : (
+                <Alert variant="warning" message="Original response not found">
+                    <div>
+                        <p>Cached query responses expire after one hour.</p>
+                        <p>
+                            To regenerate this view, please re-run your original
+                            API request.
+                        </p>
+                    </div>
+                </Alert>
+            )}
+            {originatingRequest && (
+                <Alert variant="default" message="Originating request  ">
+                    <pre
+                        className="json"
+                        dangerouslySetInnerHTML={{
+                            __html: jsonSyntaxHighlight(
+                                JSON.stringify(originatingRequest, undefined, 4)
+                            ),
+                        }}></pre>
+                </Alert>
+            )}
         </main>
     );
 }
