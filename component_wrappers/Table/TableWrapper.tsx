@@ -18,7 +18,6 @@ export default function TableWrapper({ table, endpoint, parameters }:  TableWrap
         : null
 
     const renderTable = () => {
-        console.log(rowSelectAction)
         switch(rowSelectAction) {
             case 'ACCESS_ROW_DATA':
                 return <DataAccessTable table={table} endpoint={endpoint} parameters={parameters}/>
