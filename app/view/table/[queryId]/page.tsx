@@ -4,6 +4,7 @@ import TableWrapper from '../../../../component_wrappers/Table/TableWrapper'
 import { Alert } from "@/components/UI/Alert";
 import { jsonSyntaxHighlight } from "@/common/utils"
 
+
 type props = { params: any };
 export default async function Page({ params }: props) {
     const { queryId } = await params;
@@ -13,10 +14,12 @@ export default async function Page({ params }: props) {
         "VIEW"
     );
 
-    const hasPagination = originatingRequest?.hasOwnProperty('pagination')
+    const page = originatingRequest?.parameters?.page
+    const totalNpages = originatingRequest?.pagination?.total_num_pages
+    const showPaginationWarning = page !== null && totalNpages > 1
     return (
         <main>
-            {hasPagination && <Alert variant="danger" message="Server-side pagination not yet implemented.">
+            { showPaginationWarning && <Alert variant="danger" message="Server-side pagination not yet implemented.">
                 <div>
                     <p>Displaying page XX out of XXX.</p>
                     <p>To fetch paged data, increment the value of the <span className="font-medium text-red-600">page</span> parameter in your request.</p>
