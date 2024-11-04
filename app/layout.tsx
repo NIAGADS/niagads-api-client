@@ -12,7 +12,8 @@ export const metadata: Metadata = {
 };
 
 const NAV_MENU_ITEMS: MenuItem[] = [
-    { label: "API Documentation", href: "/docs" },
+    { label: "Documentation", href: "/docs" },
+    { label: "NIAGADS", href: "https://www.niagads.org" },
     { label: "FILER", href: "https://tf.lisanwanglab.org/FILER/" },
     { label: "GenomicsDB", href: "https://www.niagads.org/genomics" },
     { label: "ADVP", href: "https://advp.niagads.org" },
@@ -27,16 +28,30 @@ export default function RootLayout({
         <>
             <html lang="en">
                 <body className={`m-0 antialiased`}>
+                    <div className="flex flex-col h-screen justify-between">
                     <header>
                         <NavigationBar
                             variant="primary"
                             brand={{
-                                label: "NIAGADS",
-                                href: "https://www.niagads.org",
+                                label: "NIAGADS Open Access API",
+                                href: "/",
                             }}
                             menuItems={NAV_MENU_ITEMS}></NavigationBar>
                     </header>
                     {children}
+
+                    <footer className="bg-primary text-white">
+                        <div className="flex flex-row justify-between items-center text-lg p-4">
+                            <div>Questions? Contact us at <span><a className="text-white underline" href="mailto:help@niagads.org?subject=NIAGADS API">help@niagads.org
+                            </a></span> with the subject: <em>NIAGADS API</em></div>
+                            <div>
+                            © Copyright 2024 University of Pennslyvania,
+                            Perelman School of Medicine
+                        </div>
+                        </div>
+
+                    </footer>
+                    </div>
                 </body>
             </html>
         </>

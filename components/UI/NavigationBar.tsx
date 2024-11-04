@@ -52,14 +52,14 @@ export const NavigationBar = ({
     }
     return (
         //<nav className="w-full sticky top-0 shadow-lg z-10">
-        <nav className="w-full shadow-lg z-10">
+        <nav className="w-full shadow-xl z-10">
             <div
-                className={`flex items-center justify-between flex-wrap p-6 ${__TAILWIND_CSS[variant]}`}>
-                <div className="flex items-center flex-shrink-0 text-white mr-6">
+                className={`flex items-center justify-between flex-wrap pt-6 pb-6 ${__TAILWIND_CSS[variant]}`}>
+                <div className="flex items-center flex-shrink-0 text-white mr-10">
                     <svg className="fill-current h-8 w-8 mr-2"></svg>{" "}
                     {/* TODO: logo */}
                     <a
-                        className="text-white text-3xl hover:no-underline"
+                        className="text-white text-4xl hover:no-underline"
                         href={brand.href}
                         target="_blank">
                         {brand.label}
