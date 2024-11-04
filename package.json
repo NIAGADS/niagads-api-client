@@ -12,6 +12,7 @@
     "@heroicons/react": "^2.1.5",
     "@tanstack/react-table": "^8.20.5",
     "@uidotdev/usehooks": "^2.4.1",
+    "badmagic": "^0.0.40",
     "export-from-json": "github:NIAGADS/export-from-json#niagads",
     "gosling.js": "^0.17.0",
     "higlass": "^1.13.4",
