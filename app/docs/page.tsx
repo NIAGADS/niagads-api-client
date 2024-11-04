@@ -1,11 +1,12 @@
+'use client'
 import { Alert } from "@/components/UI/Alert";
+import { RedocStandalone } from 'redoc';
 
 export default function Page() {
     return (
         <main>
-            <Alert message="Under construction"></Alert>
+           <RedocStandalone specUrl="/openapi.json"/>
         </main>
     );
 }
 
-//
