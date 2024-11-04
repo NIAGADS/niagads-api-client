@@ -20,6 +20,7 @@ import {
     SortingFnOption,
     getSortedRowModel,
     RowSelectionState,
+    VisibilityState,
     TableOptions,
 } from "@tanstack/react-table";
 
@@ -136,6 +137,20 @@ const __setInitialRowSelection = (columnIds: string[] | undefined) => {
     return rSelection;
 };
 
+// builds data structure to initialize row selection state
+const __setInitialColumnVisibility = (
+    defaultColumns: string[] | undefined,
+    columns: GenericColumn[]
+) => {
+    let visibility: VisibilityState = {};
+    if (defaultColumns) {
+        columns.forEach((col) => {
+            visibility[col.id] = defaultColumns.includes(col.id)
+        });
+    }
+    return visibility;
+};
+
 export interface TableProps {
     id: string;
     options?: TableConfig;
@@ -150,7 +165,9 @@ export const Table: React.FC<TableProps> = ({ id, columns, data, options }) => {
     const [rowSelection, setRowSelection] = useState<RowSelectionState>(
         __setInitialRowSelection(options?.rowSelect?.selectedValues)
     );
-    const [columnVisibility, setColumnVisibility] = useState({});
+    const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(
+        __setInitialColumnVisibility(options?.defaultColumns, columns)
+    );
     const initialRender = useRef(true); // to regulate callbacks affected by the initial state
     const enableRowSelect = !!options?.rowSelect;
     const disableColumnFilters = !!options?.disableColumnFilters;
