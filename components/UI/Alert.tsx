@@ -32,7 +32,7 @@ export const Alert = ({ variant = 'default', message, children, }: Alert) => {
             </svg>
             <span className="sr-only">Info</span>
             <div>
-                <span className="font-medium">{message}{children && ':'}</span>
+                <span className="font-bold">{message}</span>
                 {children &&
                     (typeof children === `string`
                         ? <div>{children}</div>
