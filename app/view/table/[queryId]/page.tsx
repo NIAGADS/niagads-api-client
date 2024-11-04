@@ -21,15 +21,24 @@ export default async function Page({ params }: props) {
             {showPaginationWarning && (
                 <Alert
                     variant="danger"
-                    message="Server-side pagination not yet implemented.">
+                    message="Server-side pagination of full result set not yet implemented.">
                     <div>
-                        <p>Displaying page XX out of XXX.</p>
                         <p>
-                            To fetch paged data, increment the value of the{" "}
-                            <span className="font-medium text-red-600">
-                                page
+                            Displaying page{" "}
+                            <span className="underline font-medium">
+                                {page}
                             </span>{" "}
-                            parameter in your request.
+                            out of{" "}
+                            <span className="font-medium underline">
+                                {totalNpages}
+                            </span>
+                            .
+                        </p>
+                        <p>
+                            To explore additional pages of the response data,
+                            update the value for <span className="font-bold underline">page</span> in your original request
+                            (below table) and resubmit to the API. We apologize
+                            for the inconvenience.
                         </p>
                     </div>
                 </Alert>
