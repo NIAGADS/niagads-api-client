@@ -33,7 +33,7 @@ export default function TableWrapper({ table, endpoint, parameters }:  TableWrap
     return (
         <main>
             <>
-            <Alert message="table wrapper"/>
+            {/*<Alert message="table wrapper"/>*/}
             {renderTable()}
             </>
         </main>
