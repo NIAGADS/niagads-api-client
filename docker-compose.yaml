@@ -18,7 +18,8 @@ services:
 
 networks: 
   default:
-    external: niagads-api_default
+    external: 
+      name: niagads-api_default
 
 volumes:
   ignore: 
