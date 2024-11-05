@@ -119,7 +119,7 @@ const IGVBrowser: React.FC<IGVBrowserProps> = ({
     //rearrange
     const handleSaveSession = () => {
         if (browserIsLoaded) {
-            let sessionObj = createSessionSaveObj(sessionJSON.tracks);
+            const sessionObj = createSessionSaveObj(sessionJSON.tracks);
             downloadObjectAsJson(sessionObj, "NIAGADS_IGV_session");
         } else {
             alert("Wait until the browser is loaded before saving");

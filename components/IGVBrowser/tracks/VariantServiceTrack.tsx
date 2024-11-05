@@ -610,7 +610,6 @@ class VariantServiceTrack extends igv.TrackBase {
         return menuItems;
     }
 
-    //@ts-ignore
     contextMenuItemList(clickState: any) {
         // Experimental JBrowse circular view integration
         if (this.browser.circularView && true === this.browser.circularViewVisible) {
@@ -701,7 +700,6 @@ class VariantServiceTrack extends igv.TrackBase {
                 this.trackView.repaintViews();
             }
         };
-        //@ts-ignore
         return { name: undefined, object: $e, click: clickHandler, init: undefined };
     }
 
@@ -762,7 +760,7 @@ function expandGenotype(call: any, variant: any) {
                 } else if (allele === 0) {
                     gt += variant.referenceBases;
                 } else {
-                    let alt = altArray[allele - 1].replace("<", "&lt;");
+                    const alt = altArray[allele - 1].replace("<", "&lt;");
                     gt += alt;
                 }
             }

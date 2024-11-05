@@ -12,7 +12,7 @@ interface PaginationControlsProps {
 }
 
 const __generatePageSizeOptions = (nRows: number) => {
-    let nearestTenth = Math.ceil(nRows / 10) * 10
+    const nearestTenth = Math.ceil(nRows / 10) * 10
 
     if (nearestTenth >= 500)
         return [10, 20, 30, 40, 50, 100, 500]
@@ -21,7 +21,7 @@ const __generatePageSizeOptions = (nRows: number) => {
     else if (nearestTenth >= 50)
         return [10, 20, 30, 40, 50, nRows] // range is up to but not including end
     else if (nearestTenth >= 10 && nRows >= 10) {
-        let options = range(10, nearestTenth + 10, 10)
+        const options = range(10, nearestTenth + 10, 10)
         options.push(nRows)
         return options
     }
