@@ -4,6 +4,7 @@ import { backendFetch } from '@/utils/backend'
 
 export async function GET(request: NextRequest) {
     const response = await backendFetch(request)
+    console.log(response)
     if (response.hasOwnProperty('redirect')) {
         const redirectEndpoint = `${response['redirect']}/${response['queryId']}`
         const redirectUrl = new URL(redirectEndpoint, request.url)
