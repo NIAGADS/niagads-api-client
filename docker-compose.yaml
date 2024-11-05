@@ -17,12 +17,11 @@ services:
       - ignore:/app/node_modules
     network_mode: bridge
     networks:
-      - niagads-api-network
+      - niagads-api_default
 
 networks:
-  niagads-api-network:
+  niagads-api_default:
       external: true
-      name: niagads-api_default
 
 volumes:
   ignore: 
