@@ -194,7 +194,7 @@ class VariantServiceTrack extends igv.TrackBase {
             const bpEnd = bpStart + pixelWidth * bpPerPixel + 1;
 
             // Loop through variants.  A variant == a row in a VCF file
-            for (let variant of features) {
+            for (const variant of features) {
                 if (variant.end < bpStart) continue;
                 if (variant.start > bpEnd) break;
 
@@ -205,7 +205,7 @@ class VariantServiceTrack extends igv.TrackBase {
 
                 // Compute pixel width.   Minimum width is 3 pixels,  if > 5 pixels create gap between variants
                 let x = Math.round((variant.start - bpStart) / bpPerPixel);
-                let x1 = Math.round((variant.end - bpStart) / bpPerPixel);
+                const x1 = Math.round((variant.end - bpStart) / bpPerPixel);
                 let w = Math.max(1, x1 - x);
                 if (w < 3) {
                     w = 3;
@@ -226,7 +226,7 @@ class VariantServiceTrack extends igv.TrackBase {
                     this.sampleHeight = nVariantRows * (callHeight + vGap); // For each sample, there is a call for each variant at this position
 
                     let sampleNumber = 0;
-                    for (let callSet of callSets) {
+                    for (const callSet of callSets) {
                         const call = variant.calls[callSet.id];
                         if (call) {
                             const row = "COLLAPSED" === this.displayMode ? 0 : variant.row;
@@ -237,7 +237,7 @@ class VariantServiceTrack extends igv.TrackBase {
                             let noCall = false;
 
                             if (call.genotype) {
-                                for (let g of call.genotype) {
+                                for (const g of call.genotype) {
                                     if ("." === g) {
                                         noCall = true;
                                         break;
@@ -276,7 +276,7 @@ class VariantServiceTrack extends igv.TrackBase {
     }
 
     getConsequenceValue(conseqStr: string) {
-        let conseqValue = conseqStr.replace(/ /g, "_");
+        const conseqValue = conseqStr.replace(/ /g, "_");
         return conseqValue.includes(",") ? conseqValue.split(",")[0] : conseqValue;
     }
 
@@ -385,8 +385,8 @@ class VariantServiceTrack extends igv.TrackBase {
         const genomeID = this.browser.genome.id;
         const sampleInformation = this.browser.sampleInformation;
 
-        let popupData = [];
-        for (let v of featureList) {
+        const popupData = [];
+        for (const v of featureList) {
             const f = v._f || v; // Get real variant from psuedo-variant, e.g. whole genome or SV mate
 
             if (popupData.length > 1) {
@@ -416,10 +416,10 @@ class VariantServiceTrack extends igv.TrackBase {
                 }
 
                 if (sampleInformation) {
-                    var attr = sampleInformation.getAttributes(call.callSetName);
+                    const attr = sampleInformation.getAttributes(call.callSetName);
                     if (attr) {
                         Object.keys(attr).forEach(function (attrName) {
-                            var displayText = attrName.replace(/([A-Z])/g, " $1");
+                            let displayText = attrName.replace(/([A-Z])/g, " $1");
                             displayText = displayText.charAt(0).toUpperCase() + displayText.slice(1);
                             popupData.push({ name: displayText, value: attr[attrName] });
                         });
@@ -542,8 +542,9 @@ class VariantServiceTrack extends igv.TrackBase {
             const selected = this.colorBy === item.field;
             // don't color by ADSP variant for ADSP tracks
             if (item.field === "is_adsp_variant") {
-                !this.config.id.includes("ADSP") &&
+                if (!this.config.id.includes("ADSP")) {
                     menuItems.push(this.colorByCB({ key: item.field, label: item.label }, selected));
+                }
             } else {
                 menuItems.push(this.colorByCB({ key: item.field, label: item.label }, selected));
             }
@@ -566,15 +567,14 @@ class VariantServiceTrack extends igv.TrackBase {
         }
 
         menuItems.push({ object: $('<div class="igv-track-menu-border-top">') });
-        for (let displayMode of ["COLLAPSED", "SQUISHED", "EXPANDED"]) {
-            var lut = {
-                COLLAPSED: "Collapse",
-                SQUISHED: "Squish",
-                EXPANDED: "Expand",
-            };
-
+        const lut = {
+            COLLAPSED: "Collapse",
+            SQUISHED: "Squish",
+            EXPANDED: "Expand",
+        };
+        for (const displayMode of Object.keys(lut)) {
             menuItems.push({
-                //@ts-ignore
+                // @ts-expect-error: keys of lut
                 object: $(igv.createCheckbox(lut[displayMode], displayMode === this.displayMode)),
                 click: () => {
                     this.displayMode = displayMode;
@@ -591,9 +591,9 @@ class VariantServiceTrack extends igv.TrackBase {
                 label: "Add SVs to circular view",
                 click: () => {
                     const inView = [];
-                    for (let viewport of this.trackView.viewports) {
+                    for (const viewport of this.trackView.viewports) {
                         const refFrame = viewport.referenceFrame;
-                        for (let f of viewport.getCachedFeatures()) {
+                        for (const f of viewport.getCachedFeatures()) {
                             if (f.end >= refFrame.start && f.start <= refFrame.end) {
                                 inView.push(f);
                             }
@@ -647,7 +647,7 @@ class VariantServiceTrack extends igv.TrackBase {
 
         if (this.config) {
             if (this.config.metadata) {
-                for (let key of Object.keys(this.config.metadata)) {
+                for (const key of Object.keys(this.config.metadata)) {
                     const value = this.config.metadata[key];
                     str += wrapKeyValue(key, value);
                 }
@@ -753,7 +753,7 @@ function expandGenotype(call: any, variant: any) {
             gt = "No Call";
         } else {
             const altArray = variant.alternateBases.split(",");
-            for (let allele of call.genotype) {
+            for (const allele of call.genotype) {
                 if (gt.length > 0) {
                     gt += "|";
                 }

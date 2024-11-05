@@ -73,7 +73,7 @@ const IGVBrowser: React.FC<IGVBrowserProps> = ({
 
             // if any tracks are loaded, remove them
             if (Object.keys(loadedTracks).length !== 0) {
-                for (let id of loadedTracks) {
+                for (const id of loadedTracks) {
                     removeTrackById(id, browser);
                 }
             }
@@ -103,7 +103,7 @@ const IGVBrowser: React.FC<IGVBrowserProps> = ({
 
                 // perform action in encapsulating component if track is removed
                 browser.on("trackremoved", function (track: any) {
-                    onTrackRemoved && onTrackRemoved(track.config.id);
+                    if (onTrackRemoved) {onTrackRemoved(track.config.id);}
                 });
 
                 // add browser to state
@@ -111,7 +111,7 @@ const IGVBrowser: React.FC<IGVBrowserProps> = ({
                 setBrowserIsLoaded(true);
 
                 // callback to parent component, if exist
-                onBrowserLoad ? onBrowserLoad(browser) : noop();
+                if (onBrowserLoad) { onBrowserLoad(browser);} else {noop();}
             });
         }
     }, [onBrowserLoad, memoOptions]);

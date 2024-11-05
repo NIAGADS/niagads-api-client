@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react"
+import React from "react"
 
 const __TAILWIND_CSS = {
     root: "bg-gray-50 text-gray-900 text-sm block w-full p-2.5",

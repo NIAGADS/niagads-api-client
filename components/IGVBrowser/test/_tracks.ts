@@ -1,4 +1,4 @@
-import { TrackBaseOptions } from "@browser-types/tracks";
+import { TrackBaseOptions } from "@/components/IGVBrowser/types/tracks";
 
 export const config: TrackBaseOptions[] = [
   {

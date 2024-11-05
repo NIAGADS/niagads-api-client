@@ -114,7 +114,7 @@ const trackPopover = (track: any, popoverData: any) => {
             markup += "</table>" + " <hr> " + tableStartMarkup;
         } else {
             let value = item.html ? item.html : item.value ? item.value : item.toString();
-            let color = item.color ? item.color : null;
+            const color = item.color ? item.color : null;
 
             if (color !== null) {
                 value =

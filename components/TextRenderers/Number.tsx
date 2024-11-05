@@ -1,7 +1,7 @@
 'use client'
-import React, {useMemo} from "react"
+import React from "react"
 
-import { TextRenderer, renderNullValue, renderWithInfo } from "./TextRenderer"
+import { TextRenderer, renderNullValue } from "./TextRenderer"
 import { Text } from "./BasicText"
 
 import {
@@ -32,7 +32,8 @@ export const Float = <T,>({ props }: TextRenderer<T>) => {
         return renderNullValue()
     }
 
-    value = useMemo(() => formatFloat(value, _get('precision', props, null)), [props])
+    const precision = _get('precision', props, null)
+    value = formatFloat(value, precision)
 
     return <Text props={Object.assign(props as any, { value: value })} />
 }

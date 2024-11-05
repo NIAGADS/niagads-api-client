@@ -1,5 +1,5 @@
 // /view/table/[queryId]
-import { getJsonValueFromCache } from "@/utils/cache";
+// import { getJsonValueFromCache } from "@/utils/cache";
 import { Alert } from "@/components/UI/Alert";
 import { jsonSyntaxHighlight } from "@/common/utils";
 import { MemoIGVBrowser as GenomeBrowser } from "@/components/IGVBrowser/IGVBrowser";

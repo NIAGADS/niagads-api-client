@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 
 type Variants = "default" | "primary" | "secondary" | "light" | "accent";
 

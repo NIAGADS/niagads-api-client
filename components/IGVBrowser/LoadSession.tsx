@@ -5,9 +5,10 @@ export default function LoadSessionButton(props: any) {
     const fileRef = useRef()
 
     const handleClick = () => {
-        if (fileRef.current !== null) {
+        return true
+   /*     if (fileRef.current !== null) {
             fileRef.current.click();
-        }
+        }*/
     }
 
     const handleFileChange = (e: any) => {
@@ -33,7 +34,7 @@ export default function LoadSessionButton(props: any) {
         <div>
             <input 
                 type="file" 
-                ref={fileRef} 
+               // ref={fileRef} 
                 accept=".json" 
                 style={{display: 'none'}}
                 onChange={handleFileChange}

@@ -92,15 +92,15 @@ class VariantPValueTrack extends igv.TrackBase {
             const bpPerPixel = options.bpPerPixel
             const bpStart = options.bpStart
             const bpEnd = bpStart + pixelWidth * bpPerPixel + 1
-            for (let variant of featureList) {
+            for (const variant of featureList) {
                 const pos = variant.start
                 if (pos < bpStart) continue
                 if (pos > bpEnd) break
 
                 const colorScale = this.getColorScale(variant._f ? variant._f.chr : variant.chr)
                 
-                let val = variant.neg_log10_pvalue > this.maxValue ? this.maxValue : variant.neg_log10_pvalue;
-                let color = colorScale.getColor(val)
+                const val = variant.neg_log10_pvalue > this.maxValue ? this.maxValue : variant.neg_log10_pvalue;
+                const color = colorScale.getColor(val)
             
                 const px = Math.round((pos - bpStart) / bpPerPixel)
                 const py = Math.max(this.dotSize, pixelHeight - Math.round((val - this.dataRange.min) / yScale))
@@ -119,7 +119,7 @@ class VariantPValueTrack extends igv.TrackBase {
         if (this.useChrColors) {
             let cs = this.colorScales[chr]
             if (!cs) {
-                //@ts-ignore
+                //@ts-expect-error: list indexes
                 const color = ManhattanColors[chr] || igv.randomColorPalette()
                 cs = new igv.ConstantColorScale(color)
                 this.colorScales[chr] = cs
@@ -132,7 +132,7 @@ class VariantPValueTrack extends igv.TrackBase {
 
     paintAxis(ctx: number, pixelWidth: number, pixelHeight:number) {
         igv.IGVGraphics.fillRect(ctx, 0, 0, pixelWidth, pixelHeight, {'fillStyle': "rgb(255, 255, 255)"})
-        var font = {
+        const font = {
             'font': 'normal 10px Arial',
             'textAlign': 'right',
             'strokeStyle': "black"
@@ -166,10 +166,10 @@ class VariantPValueTrack extends igv.TrackBase {
     popupData(clickState: any, features: any) {
         const featureList = this.clickedFeatures(clickState, features);
         const recHref = FEATURE_INFO_BASE_URL;
-        let data:any = []
+        const data:any = []
         if (featureList) {
             let count = 0
-            for (let f of featureList) {
+            for (const f of featureList) {
                 const xDelta = Math.abs(clickState.canvasX - f.px)
                 const yDelta = Math.abs(clickState.canvasY - f.py)
                 if (xDelta < this.dotSize && yDelta < this.dotSize) {
@@ -186,7 +186,7 @@ class VariantPValueTrack extends igv.TrackBase {
                         data.push({name: 'p-Value:', value: f.pvalue})  
                         data.push({name: 'Variant:', html: `<a target="_blank" href="${href}">${f.variant}</a>`, title: "View GenomicsDB record for variant " + f.variant})
                         if (f.hasOwnProperty('gene_id')) {
-                            let href = recHref + '/gene/' + f.gene_id;
+                            href = recHref + '/gene/' + f.gene_id;
                             const geneDisplay = f.hasOwnProperty('gene_symbol') ? f.gene_symbol : f.gene_id;
                             data.push({name: 'Target', html: `<a target="_blank" href="${href}">${geneDisplay}</a>`, title: "View GenomicsDB record for gene " + geneDisplay})
                         }

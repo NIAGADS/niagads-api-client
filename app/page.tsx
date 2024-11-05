@@ -35,7 +35,7 @@ export default function Home() {
                     </h1>
                     <div className="p-3 max-w-[750px]">
                         NIAGADS has developed several databases and tools in
-                        support of Alzheimer's disease (AD) research. Our
+                        support of Alzheimer&apos;s disease (AD) research. Our
                         application programming interface (API) provides
                         programmatic accesses to these resources, allowing users
                         to integrate our data and annotations into their own

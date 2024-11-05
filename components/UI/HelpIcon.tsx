@@ -18,7 +18,7 @@ export const HelpIcon = ({message, type}: HelpIcon) => {
         : <QuestionMarkCircleIcon className="ml-1 size-3 text-blue-600"/>
 
 
-    return <Tooltip children={icon} message={message}></Tooltip>
+    return <Tooltip message={message}>{icon}</Tooltip>
 }
 
 export const renderHelpIcon = (message:ReactNode | string, type: 'question'|'info' = 'question') => {

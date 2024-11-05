@@ -14,7 +14,7 @@ export const loadTrack = async (config: any, browser: any) => {
 };
 
 export const loadTracks = (tracks: TrackBaseOptions[], browser: any) => {
-    for (let track of tracks as IGVTrackOptions[]) {
+    for (const track of tracks as IGVTrackOptions[]) {
         if (track.type.includes("_service")) {
             track.reader = resolveTrackReader(track.type, {
                 endpoint: track.url,
@@ -40,14 +40,14 @@ export const createSessionSaveObj = (tracks: TrackBaseOptions[]): Session => {
     tracks = tracks.filter((track) => !(track.id === "reference"));
 
     //remove any functions
-    for (let track of tracks) {
-        for (let prop in track) {
+    for (const track of tracks) {
+        for (const prop in track) {
             if (typeof prop === "function") delete track[prop];
         }
     }
 
     //TODO: locus and roi are currently set to default values
-    let sessionObj: Session = {
+    const sessionObj: Session = {
         tracks: tracks,
         roi: [],
         locus: "chr19:1,038,997-1,066,572",
@@ -60,7 +60,7 @@ export const removeNonReferenceTracks = (
     tracks: TrackBaseOptions[],
     browser: any
 ) => {
-    for (let track of tracks) {
+    for (const track of tracks) {
         if (track.id !== "REFSEQ_GENE" && track.id !== "ENSEMBL_GENE") {
             browser.removeTrackByName(track.name);
         }
