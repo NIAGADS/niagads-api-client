@@ -17,7 +17,7 @@ services:
       - ignore:/app/node_modules
 
 networks: 
-  default:
+  niagads-api_default:
     external: 
       name: niagads-api_default
 
