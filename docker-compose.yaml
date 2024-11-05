@@ -15,10 +15,13 @@ services:
       # and keep the docker container from finding node_modules installed on the host
       # https://github.com/Kartikdot/TS-Node-Docker-Starter/blob/main/docker-compose.yaml
       - ignore:/app/node_modules
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-      
+
+networks: 
+  default:
+    external: niagads-api_default
+
 volumes:
   ignore: 
+
 
 # see https://github.com/ErickWendel/livereload-docker-nodejs-typescript/blob/master/Dockerfile
