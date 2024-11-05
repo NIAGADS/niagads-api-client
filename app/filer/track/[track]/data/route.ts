@@ -6,9 +6,9 @@ import { requestFromBrowser } from '@/validators/request'
 import { headers } from 'next/headers'
 
 export async function GET(request: NextRequest) {
+    const redirectRequestUrl = process.env.API_PUBLIC_URL
     const response = await backendFetch(request)
     if (response.hasOwnProperty('redirect')) {
-        console.log('here')
         const userAgent = (await headers()).get('User-Agent')
         const validUserAgent: boolean = requestFromBrowser(userAgent!)
         if (!validUserAgent) {
@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
             })
         }
         const redirectEndpoint = `${response['redirect']}/${response['queryId']}`
-        const redirectUrl = new URL(redirectEndpoint, request.url)
+        const redirectUrl = new URL(redirectEndpoint, redirectRequestUrl)
         return NextResponse.redirect(redirectUrl)
     }
 
