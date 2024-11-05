@@ -15,10 +15,11 @@ services:
       # and keep the docker container from finding node_modules installed on the host
       # https://github.com/Kartikdot/TS-Node-Docker-Starter/blob/main/docker-compose.yaml
       - ignore:/app/node_modules
+    network_mode: bridge
     networks:
       - niagads-api-network
 
-networks: 
+networks:
   niagads-api-network:
       external: true
       name: niagads-api_default
