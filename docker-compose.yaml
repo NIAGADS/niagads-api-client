@@ -1,17 +1,4 @@
 services:
-  server-app:
-    container_name: server-${API_VERSION}
-    image: niagads-api-server
-    build:
-      context: .
-      dockerfile: ./server.Dockerfile
-      args:
-          BUILD: ${BUILD}
-    ports:
-      - '${SERVER_API_PORT}:8000'
-    volumes:
-      - ${APPLICATION_DIR}:/app
-
   client-app:
     container_name: client-${API_VERSION}
     image: niagads-api-client
