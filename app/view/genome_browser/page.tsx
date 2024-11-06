@@ -42,7 +42,7 @@ export default async function Page({
     const configEndpoint = `${process.env.API_SERVICE_URL}/filer/browser_config/?track=${qp.tracks}`
     const response = await fetch(configEndpoint);
     const config = (await response.json()).response
-    console.log(config)
+    
     
     // FIXME: browser config is invalid
  
