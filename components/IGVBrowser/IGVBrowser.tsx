@@ -107,7 +107,7 @@ const IGVBrowser: React.FC<IGVBrowserProps> = ({
 
             if (memoOptions != null) {
                 igv.registerTrackClass("gwas_service", VariantPValueTrack);
-                igv.registerTrackClass("eqtl", VariantPValueTrack);
+                igv.registerTrackClass("qtl", VariantPValueTrack);
                 igv.registerTrackClass("variant_service", VariantTrack);
 
                 igv.createBrowser(targetDiv, memoOptions).then(function (
