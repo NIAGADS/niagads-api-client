@@ -1,7 +1,8 @@
+// TEMPLATE route
 import { NextRequest } from 'next/server'
-import { backendFetch } from '@/utils/backend'
+import { get_with_redirect } from "@/utils/requestHandlers"
 
 export async function GET(request: NextRequest) {
-    const response = await backendFetch(request)
-    return Response.json(response)
-}
+    return get_with_redirect(request);
+} 
+
