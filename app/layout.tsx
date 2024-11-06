@@ -13,10 +13,9 @@ export const metadata: Metadata = {
 
 const NAV_MENU_ITEMS: MenuItem[] = [
     { label: "Documentation", href: "/docs" },
-    { label: "NIAGADS", href: "https://www.niagads.org" },
-    { label: "FILER", href: "https://tf.lisanwanglab.org/FILER/" },
-    { label: "GenomicsDB", href: "https://www.niagads.org/genomics" },
-    { label: "ADVP", href: "https://advp.niagads.org" },
+    { label: "NIAGADS Home", href: "https://www.niagads.org" },
+    { label: "Open Access", href: "https://www.niagads.org/open-access" },
+    { label: "Usage", href: "https://github.com/NIAGADS/example" },
 ];
 
 export default function RootLayout({

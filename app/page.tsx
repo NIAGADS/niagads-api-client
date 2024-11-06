@@ -33,14 +33,29 @@ export default function Home() {
                     <h1 className="text-4xl font-normal">
                         About NIAGADS Open Access
                     </h1>
+                    <div className="-p-3 max-w-[750px]">
+                        The National Institute on Aging Genetics of Alzheimer's
+                        Disease Data Storage Site (
+                        <a href="https://www.niagads.org/" target="_blank">
+                            NIAGADS
+                        </a>
+                        ) stores and distributes genetics and genomics data from
+                        studies on Alzheimer&apos;s disease, related dementias,
+                        and aging to qualified researchers globally.
+                    </div>
                     <div className="p-3 max-w-[750px]">
-                        NIAGADS has developed several databases and tools in
-                        support of Alzheimer&apos;s disease (AD) research. Our
-                        application programming interface (API) provides
-                        programmatic accesses to these resources, allowing users
-                        to integrate our data and annotations into their own
-                        analysis pipelines, facilitating investigations at
-                        chromosome- and genome-wide scales.{" "}
+                        <a
+                            href="https://www.niagads.org/open-access/"
+                            target="_blank">
+                            NIAGADS Open Access
+                        </a>{" "}
+                        is a collection of files and web-based knowledgebases
+                        made available to the public with no data access
+                        restrictions. Our application programming interface
+                        (API) provides programmatic accesses to these resources,
+                        allowing users to integrate our data and annotations
+                        into their own analysis pipelines, facilitating
+                        investigations at chromosome- and genome-wide scales.{" "}
                     </div>
                     <div className="max-w-[750px]">
                         The NIAGADS API uses HTTP requests to access and
