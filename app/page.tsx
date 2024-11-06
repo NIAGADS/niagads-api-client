@@ -34,7 +34,7 @@ export default function Home() {
                         About NIAGADS Open Access
                     </h1>
                     <div className="-p-3 max-w-[750px]">
-                        The National Institute on Aging Genetics of Alzheimer's
+                        The National Institute on Aging Genetics of Alzheimer&apos;s
                         Disease Data Storage Site (
                         <a href="https://www.niagads.org/" target="_blank">
                             NIAGADS
