@@ -10,7 +10,7 @@ export async function backendFetch(request: NextRequest) {
     return data
 }
 
-export async function backendFetchFromPath(path: string) {
+export async function backendFetchFromPath(path: string, relative:boolean=false) {
     const requestUri:string = process.env.API_SERVER_URL! + path
     const response = await(fetch(requestUri))
     const data = await response.json()

@@ -1,29 +1,31 @@
-// /view/table/[queryId]
+// /view/genome_browser/[queryId]
 // import { getJsonValueFromCache } from "@/utils/cache";
 import { Alert } from "@/components/UI/Alert";
 import { jsonSyntaxHighlight } from "@/common/utils";
 import { MemoIGVBrowser as GenomeBrowser } from "@/components/IGVBrowser/IGVBrowser";
-import { FEATURE_SEARCH_ENDPOINT } from "@/components/IGVBrowser/data/_constants";
 import { config } from "@/components/IGVBrowser/test/_tracks";
+import { getJsonValueFromCache } from "@/utils/cache";
+
 
 type props = { params: any };
 export default async function Page({ params }: props) {
-    /* const { queryId } = await params;
+    const { queryId } = await params;
     const originatingRequest = await getJsonValueFromCache(
         `${queryId}_request`,
         "VIEW"
-    ); */
+    );
 
-    const originatingRequest = null;
+    // console.log(originatingRequest)
+    //const originatingRequest = null;
 
     const browserConfig = true; // await getJsonValueFromCache(`${queryId}_IGV_browser_config`, "VIEW");
 
     return (
         <main>
+            <Alert message="Not yet implemented" variant="danger">Test render.  Full genome browser coming soon.</Alert>
             {browserConfig ? (
                 <GenomeBrowser
                     tracks={config}
-                    featureSearchUrl={FEATURE_SEARCH_ENDPOINT}
                     genome="hg38"></GenomeBrowser>
             ) : (
                 <Alert variant="warning" message="Original response not found">
