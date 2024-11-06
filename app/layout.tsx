@@ -30,7 +30,7 @@ export default function RootLayout({
                     <div className="flex flex-col h-screen justify-between">
                     <header>
                         <NavigationBar
-                            variant="primary"
+                            variant="accent"
                             brand={{
                                 label: "NIAGADS Open Access API",
                                 href: "/",

@@ -13,7 +13,7 @@ export default function Home() {
     return (
         <main className="p-0">
             <div className="w-full m-0 p-0">
-                <div className="bg-primary pt-52 pb-48 flex flex-col justify-center items-center">
+                <div className="bg-slate-900 pt-52 pb-48 flex flex-col justify-center items-center">
                     <div className="text-secondary text-6xl">
                         NIAGADS Open Access API
                     </div>

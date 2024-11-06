@@ -31,7 +31,7 @@ const __renderMenuItems = (items: MenuItem[]) => {
             <a
                 key={index}
                 href={items.href}
-                className="block mt-4 lg:inline-block lg:mt-0 text-secondary hover:text-white mr-4">
+                className="block mt-4 lg:inline-block lg:mt-0 text-black hover:text-white mr-4">
                 {items.label}
             </a>
         );
@@ -44,12 +44,6 @@ export const NavigationBar = ({
     logo,
     menuItems,
 }: NavigationProps) => {
-    if (variant != "primary") {
-        console.error(
-            "Only `primary` navigation variant is currently implemented"
-        );
-        variant = "primary";
-    }
     return (
         //<nav className="w-full sticky top-0 shadow-lg z-10">
         <nav className="w-full shadow-xl z-10">
