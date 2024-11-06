@@ -1,24 +1,19 @@
 import type { NextConfig } from "next";
 
 
-const nextConfig: NextConfig = {
+const nextConfig = {
 
-        /*async rewrites() {
+        async rewrites() {
             return [
                 {
-                    source: '/service/**',
-                    destination: 'https://www.niagads.org/genomics',
-                    changeOrigin: true,
-                    secure: false
+                    source: '/service/:path*',
+                    destination: 'https://www.niagads.org/genomics/service/:path*'
                 },
-                {
-                    source: "/files/**",
-                    target: "https://www.niagads.org/genomics",
-                    changeOrigin: true,
-                    secure: false,
-                },
+                { source: '/files/:path*',
+                    destination: 'https://www.niagads.org/genomics/files/:path*'
+                }
             ]
-        }*/
+        }
     
 };
 
