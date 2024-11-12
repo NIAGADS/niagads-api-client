@@ -128,7 +128,7 @@ const __isValidRowId = (data: TableData, columnId: string) => {
 
 // builds data structure to initialize row selection state
 const __setInitialRowSelection = (columnIds: string[] | undefined) => {
-    let rSelection: RowSelectionState = {};
+    const rSelection: RowSelectionState = {};
     if (columnIds) {
         columnIds.forEach((colId) => {
             rSelection[colId] = true;
@@ -142,7 +142,7 @@ const __setInitialColumnVisibility = (
     defaultColumns: string[] | undefined,
     columns: GenericColumn[]
 ) => {
-    let visibility: VisibilityState = {};
+    const visibility: VisibilityState = {};
     if (defaultColumns) {
         columns.forEach((col) => {
             visibility[col.id] = defaultColumns.includes(col.id)
@@ -275,7 +275,7 @@ export const Table: React.FC<TableProps> = ({ id, columns, data, options }) => {
     }, []);
 
     const resolvedData = useMemo<TableData>(() => {
-        let tableData: TableData = [];
+        const tableData: TableData = [];
         const enFields = columns.length; // expected number of fields
         try {
             data.forEach((row: TableRow, index: number) => {
@@ -294,7 +294,7 @@ export const Table: React.FC<TableProps> = ({ id, columns, data, options }) => {
 
                 const tableRow: TableRow = {};
                 for (const [columnId, value] of Object.entries(row)) {
-                    let currentColumn = getColumn(columnId, columns);
+                    const currentColumn = getColumn(columnId, columns);
                     if (currentColumn === undefined) {
                         throw new Error(
                             "Invalid column name found in table data definition `" +
@@ -319,7 +319,7 @@ export const Table: React.FC<TableProps> = ({ id, columns, data, options }) => {
     // build table options conditionally
     // cannot memoize this b/c it depends on the state;
     // doing so leads to very slow rerenders
-    let reactTableOptions: TableOptions<TableRow> = {
+    const reactTableOptions: TableOptions<TableRow> = {
         data: resolvedData,
         columns: resolvedColumns,
         getCoreRowModel: getCoreRowModel(),
@@ -349,10 +349,9 @@ export const Table: React.FC<TableProps> = ({ id, columns, data, options }) => {
 
         const rowIdColumn = options?.rowSelect?.rowId;
         if (!!rowIdColumn) {
-            const isValidRowId = useMemo(
-                () => __isValidRowId(resolvedData, rowIdColumn),
-                [rowIdColumn]
-            );
+            // -@ts-expect-error: useMemo used conditionally
+            // const isValidRowId = useMemo(() => __isValidRowId(resolvedData, rowIdColumn), [rowIdColumn]);
+            const isValidRowId = __isValidRowId(resolvedData, rowIdColumn);
             if (isValidRowId) {
                 Object.assign(reactTableOptions, {
                     getRowId: (row: TableRow) =>
@@ -373,7 +372,7 @@ export const Table: React.FC<TableProps> = ({ id, columns, data, options }) => {
     useLayoutEffect(() => {
         if (options?.onTableLoad) {
             // TODO: if (initialRender.current)  // not sure if necessary - initialRender is a useRef / from GenomicsDB code; has to do w/pre-selected rows
-            table && options.onTableLoad(table);
+            if (table) {options.onTableLoad(table)}
         }
     }, [table]);
 

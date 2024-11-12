@@ -7,6 +7,9 @@ import { TableWrapperProps } from "./types";
 import { renderTooltip } from "@/components/UI";
 import { useRouter } from "next/router";
 
+const TRACK_DATA_REDIRECT_ENDPOINT = "/filer/data?";
+const GENOME_BROWSER_REDIRECT_ENDPOINT = "/view/genome_browser/?";
+
 export default function DataAccessTable({
     table,
     endpoint,
@@ -16,14 +19,24 @@ export default function DataAccessTable({
     const [disableRowSelectAction, setDisableRowSelectAction] =
         useState<boolean>(true);
     //const router = useRouter()
-    
-    const getTrackDataUrl = `/filer/data?format=table&loc=${parameters.loc}&track=`
 
     const handleGetTrackData = () => {
-        const requestUrl = getTrackDataUrl + Object.keys(selectedRows).join(',')
-        window.open(requestUrl) // will open a new tab
+        const redirectParameters =
+            `format=table&loc=${parameters.loc}&track=` +
+            Object.keys(selectedRows).join(",");
+        const requestUrl = TRACK_DATA_REDIRECT_ENDPOINT + redirectParameters;
+        window.open(requestUrl); // will open a new tab
         // router.push(requestUrl) // will open in same tab
-    }
+    };
+
+    const handleGenomeBrowserView = () => {
+        const redirectParameters =
+            `locus=${parameters.loc}&tracks=` +
+            Object.keys(selectedRows).join(",");
+        const requestUrl =
+            GENOME_BROWSER_REDIRECT_ENDPOINT + redirectParameters;
+        window.open(requestUrl);
+    };
 
     const handleRowSelect = (rows: RowSelectionState) => setSelectedRows(rows);
     Object.assign(table.options!.rowSelect!, { onRowSelect: handleRowSelect });
@@ -40,12 +53,26 @@ export default function DataAccessTable({
 
     const renderRowSelectActionButton = (disabled: boolean) => {
         return (
-            <Button variant="primary" disabled={disabled} onClick={handleGetTrackData}>
-                <span>
-                    Get <span className="underline">selected</span> track data
-                    in the region {parameters.loc}
-                </span>
-            </Button>
+            <div className="flex flex-row gap-2">
+                <Button
+                    variant="primary"
+                    disabled={disabled}
+                    onClick={handleGetTrackData}>
+                    <span>
+                        Get <span className="underline">selected</span> track
+                        data in the region {parameters.loc}
+                    </span>
+                </Button>
+                <Button
+                    variant="primary"
+                    disabled={disabled}
+                    onClick={handleGenomeBrowserView}>
+                    <span>
+                        View <span className="underline">selected</span> track
+                        data on the NIAGADS Genome Browser
+                    </span>
+                </Button>
+            </div>
         );
     };
 

@@ -17,5 +17,5 @@ export function Tooltip({ message, children }: Tooltip) {
 
 // function that renders default (bottom) tooltip
 export const renderTooltip = (children: any, message: any) => {
-    return <Tooltip children={children} message={message} />
+    return <Tooltip message={message}>{children}</Tooltip>
 }

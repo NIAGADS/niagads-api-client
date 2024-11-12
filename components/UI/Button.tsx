@@ -15,7 +15,7 @@ const __TAILWIND_CSS = {
     // Sizes
     sm: 'px-1 py-1',
     md: 'px-4 py-2',
-    lg: 'px-5 py-2.5',
+    lg: 'px-5 py-2.5 text-2xl',
 }
 
 type ButtonVariants = 'default' | 'primary' | 'secondary' | 'white' | 'accent' 

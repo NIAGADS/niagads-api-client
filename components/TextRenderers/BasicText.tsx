@@ -79,7 +79,7 @@ export const LargeText = <T,>({ props }: TextRenderer<T>) => {
     const truncatedValue = `${value.slice(0, maxLength - 3)}...`
 
     if (hasTooltip) {
-        let newProps = _deepCopy(props)
+        const newProps = _deepCopy(props)
         newProps.value = truncatedValue
         return <Text props={newProps} />
     }

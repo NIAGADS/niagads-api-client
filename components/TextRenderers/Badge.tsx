@@ -3,7 +3,6 @@ import { _get, _hasOwnProperty, _isNA, _isNull } from "@/common/utils";
 import {
     TextRenderer,
     buildElementStyle,
-    getIconElement,
     renderNullValue,
     renderStyledText,
     renderWithIcon,
@@ -64,7 +63,7 @@ export const BooleanBadge = <T,>({ props }: TextRenderer<T>) => {
         value = _get('nullValue', props, 'NA')
     }
 
-    let displayProps = {
+    const displayProps = {
         'value': value.toString(),
     }
 

@@ -25,6 +25,7 @@ ARG BUILD
 WORKDIR /app
 COPY --from=builder /src/node_modules node_modules
 
+# todo fix build command to handle dev vs prod
 ENV BUILD_ENV=${BUILD}
 EXPOSE 3000
-CMD npm run start-$BUILD_ENV
+CMD npm run start
