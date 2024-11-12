@@ -1,4 +1,6 @@
-# NIAGADS Open Access API 
+# NIAGADS Open Access API - Client
+
+Client and Server side components for the NIAGADS Open Access API UI.
 
 > NOTE: **The API is still under development and has been release in _alpha_.**
 
@@ -16,9 +18,6 @@ The [NIAGADS Open Access API](https://api.niagads.org) provides programmatic acc
 
 Visit <https://github.com/NIAGADS/example> for additional usage examples.
 
-## About this Project: niagads-api-client
-
-Client and Server side components for the NIAGADS Open Access API UI.
 
 ## Dependencies
 
