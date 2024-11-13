@@ -13,7 +13,7 @@ export default async function Page({ params }: props) {
         "VIEW"
     );
 
-    const page = originatingRequest?.parameters?.page;
+    const page = originatingRequest?.pagination?.page;
     const totalNpages = originatingRequest?.pagination?.total_num_pages;
     const showPaginationWarning = page !== null && totalNpages > 1;
     return (
