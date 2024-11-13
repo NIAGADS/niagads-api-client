@@ -2,6 +2,7 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { NavigationBar, MenuItem } from "@/components/UI/NavigationBar";
+// import { Alert } from "@/components/UI/Alert";
 
 // TODO: update tailwind imported fonts w/localFonts
 // see layout.tsx.orig
@@ -29,6 +30,7 @@ export default function RootLayout({
                 <body className={`m-0 antialiased`}>
                     <div className="flex flex-col h-screen justify-between">
                     <header>
+                    {/*<Alert variant="danger" message="API Temporarily Down"><p>Under maintenance from 1:00-2:00 PM 11/13/2024</p></Alert> */}
                         <NavigationBar
                             variant="accent"
                             brand={{
