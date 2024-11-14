@@ -88,7 +88,7 @@ export const LargeText = <T,>({ props }: TextRenderer<T>) => {
     const textElement = renderStyledText(isExpanded ? value : truncatedValue, style, "")
     const action = isExpanded ? 'Show Less' : 'Show More'
     return (
-        <div className="max-w-[300px]">
+        <div className="max-w-[300px] break-words">
             {textElement}{"   "}
             <a className="text-xs info-link" onClick={toggleIsExpanded}>{action}</a>
         </div>
