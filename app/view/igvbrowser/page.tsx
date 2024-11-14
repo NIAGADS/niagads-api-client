@@ -28,6 +28,9 @@ import { NextRequest } from "next/server";
     */
 
 type props = { locus: string; tracks: string };
+
+const BROWSER_CONFIG_ENDPOINT='config/igvbrowser/?track'
+
 export default async function Page({
     params,
     searchParams,
@@ -38,14 +41,10 @@ export default async function Page({
     const qp = await searchParams
     const locus: string = qp.locus as string
 
-    //FIXME: need to pass the /db endpoint dynamically
-    const configEndpoint = `${process.env.API_SERVICE_URL}/filer/browser_config/?track=${qp.tracks}`
+    //FIXME: need to extract the /db path from the route
+    const configEndpoint = `${process.env.API_SERVICE_URL}/filer/${BROWSER_CONFIG_ENDPOINT}=${qp.tracks}`
     const response = await fetch(configEndpoint);
-    const config = (await response.json()).response
-    
-    
-    // FIXME: browser config is invalid
- 
+    const config = (await response.json()).response 
 
     return (
         <main>

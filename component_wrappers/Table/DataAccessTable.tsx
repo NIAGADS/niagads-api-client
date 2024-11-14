@@ -8,7 +8,7 @@ import { renderTooltip } from "@/components/UI";
 import { useRouter } from "next/router";
 
 const TRACK_DATA_REDIRECT_ENDPOINT = "/filer/data?";
-const GENOME_BROWSER_REDIRECT_ENDPOINT = "/view/genome_browser/?";
+const GENOME_BROWSER_REDIRECT_ENDPOINT = "/view/igvbrowser/?";
 
 export default function DataAccessTable({
     table,
@@ -80,9 +80,9 @@ export default function DataAccessTable({
         <main>
             {disableRowSelectAction == true
                 ? renderTooltip(
-                      renderRowSelectActionButton(disableRowSelectAction),
-                      "Select tracks from the table below"
-                  )
+                    renderRowSelectActionButton(disableRowSelectAction),
+                    "Select tracks from the table below"
+                )
                 : renderRowSelectActionButton(disableRowSelectAction)}
             <Table
                 id={table.id}
