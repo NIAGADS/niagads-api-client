@@ -7,7 +7,6 @@ import { headers } from 'next/headers'
 
 export async function get_with_redirect(request: NextRequest) {
     const redirectRequestUrl = process.env.API_PUBLIC_URL
-    console.log(redirectRequestUrl)
     const response = await backendFetch(request)
     if (response.hasOwnProperty('redirect')) {
         const userAgent = (await headers()).get('User-Agent')
