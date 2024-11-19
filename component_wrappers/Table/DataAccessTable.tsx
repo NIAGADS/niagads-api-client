@@ -63,15 +63,17 @@ export default function DataAccessTable({
                         data in the region {parameters.loc}
                     </span>
                 </Button>
-                <Button
-                    variant="primary"
-                    disabled={disabled}
-                    onClick={handleGenomeBrowserView}>
-                    <span>
-                        View <span className="underline">selected</span> track
-                        data on the NIAGADS Genome Browser
-                    </span>
-                </Button>
+                {parameters.assembly === "GRCh38" && (
+                    <Button
+                        variant="primary"
+                        disabled={disabled}
+                        onClick={handleGenomeBrowserView}>
+                        <span>
+                            View <span className="underline">selected</span>{" "}
+                            track data on the NIAGADS Genome Browser
+                        </span>
+                    </Button>
+                )}
             </div>
         );
     };
@@ -80,9 +82,9 @@ export default function DataAccessTable({
         <main>
             {disableRowSelectAction == true
                 ? renderTooltip(
-                    renderRowSelectActionButton(disableRowSelectAction),
-                    "Select tracks from the table below"
-                )
+                      renderRowSelectActionButton(disableRowSelectAction),
+                      "Select tracks from the table below"
+                  )
                 : renderRowSelectActionButton(disableRowSelectAction)}
             <Table
                 id={table.id}
