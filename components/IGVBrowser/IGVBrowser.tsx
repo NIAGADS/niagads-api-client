@@ -8,6 +8,7 @@ import React, {
     useState,
     useEffect,
     useRef,
+    useCallback
 } from "react";
 import igv from "igv/dist/igv.esm";
 import noop from "lodash.noop";
