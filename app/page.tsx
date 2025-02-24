@@ -14,6 +14,17 @@ export default function Home() {
         <main className="p-0">
             <div className="w-full m-0 p-0">
                 <div className="bg-slate-900 pt-52 pb-48 flex flex-col justify-center items-center">
+                    <Alert variant="info" message="THE NIAGADS Open Access API is being updated!">
+                        <div>
+                            <p>
+                                From 2/24/2025 - 3/8/2025 we will be rolling out an extended set of endpoints for the NIAGADS Open Access API.
+                            </p>
+                            <p>
+                                During this time <strong>VIEWS</strong> (e.g., tables, IGV browser) will be unavailable, and requests to generate views against the API will only return JSON responses.
+                            </p>
+                            <p>Our apologies for the inconvenience.</p>
+                        </div>
+                    </Alert>
                     <div className="text-secondary text-6xl">
                         NIAGADS Open Access API
                     </div>
@@ -34,8 +45,8 @@ export default function Home() {
                         About NIAGADS Open Access
                     </h1>
                     <div className="-p-3 max-w-[750px]">
-                        The National Institute on Aging Genetics of Alzheimer&apos;s
-                        Disease Data Storage Site (
+                        The National Institute on Aging Genetics of
+                        Alzheimer&apos;s Disease Data Storage Site (
                         <a href="https://www.niagads.org/" target="_blank">
                             NIAGADS
                         </a>
