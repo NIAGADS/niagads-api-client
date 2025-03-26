@@ -17,10 +17,10 @@ export default function Home() {
                     <Alert variant="info" message="THE NIAGADS Open Access API is being updated!">
                         <div>
                             <p>
-                                From 2/24/2025 - 3/8/2025 we will be rolling out an extended set of endpoints for the NIAGADS Open Access API.
+                                From 3/8/2025-4/1/2025 we will be rolling out an extended set of endpoints for the NIAGADS Open Access API.
                             </p>
                             <p>
-                                During this time <strong>VIEWS</strong> (e.g., tables, IGV browser) will be unavailable, and requests to generate views against the API will only return JSON responses.
+                                During this time some endpoints may fail and <strong>VIEWS</strong> (e.g., tables, IGV browser) will be unavailable, and requests to generate views against the API will only return JSON responses.
                             </p>
                             <p>Our apologies for the inconvenience.</p>
                         </div>
